@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>덴트 견적 문의</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>덴트 견적 문의</h1>
+        <p>차량 정보와 덴트가 필요한 부위를 알려주세요.</p>
+        <form id="quote-form">
+            <div class="form-group">
+                <label for="car-brand">차량 브랜드:</label>
+                <input type="text" id="car-brand" name="car-brand" placeholder="예) 현대" required>
+            </div>
+            <div class="form-group">
+                <label for="car-model">차량 이름:</label>
+                <input type="text" id="car-model" name="car-model" placeholder="예) 그랜져 TG" required>
+            </div>
+            <div class="form-group">
+                <label for="car-color">차량 색상:</label>
+                <input type="text" id="car-color" name="car-color" placeholder="예) 흰색" required>
+            </div>
+            <div class="form-group">
+                <label>덴트가 필요한 부위를 선택해주세요: <button type="button" id="undo-mark-button">마지막 표시 취소</button></label>
+                <div id="image-container">
+                    <img id="car-diagram" src="my_car_image.png" alt="차량 다이어그램" />
+                </div>
+            </div>
+            <button type="submit">견적 문의 보내기</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #0056b3;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#image-container {
+    position: relative;
+    cursor: crosshair;
+    text-align: center; /* 이미지를 가운데 정렬합니다. */
+}
+
+#car-diagram {
+    max-width: 100%;
+    height: auto;
+    background-color: #f0f0f0; /* 이미지가 로드되지 않을 경우를 대비한 배경색 */
+}
+
+#car-diagram {
+    max-width: 100%;
+    height: auto;
+}
+
+.marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #004494;
+}
+
+#undo-mark-button {
+    width: auto; /* 너비를 자동으로 설정하여 내용에 맞게 조절 */
+    padding: 5px 10px; /* 패딩 조정 */
+    background-color: #dc3545; /* 빨간색 배경 */
+    color: #ffc107; /* 노란색 글씨 */
+    border-radius: 50%; /* 둥근 모양 */
+    font-size: 14px;
+    margin-left: 10px; /* 라벨과의 간격 */
+    vertical-align: middle; /* 라벨과 세로 정렬 */
+}
