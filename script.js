@@ -44,6 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             emailBody += `  - 위치 ${index + 1}: x=${marker.x.toFixed(2)}, y=${marker.y.toFixed(2)}\n`;
         });
 
-        window.location.href = `mailto:kds0756@naver.com?subject=덴트 견적 문의&body=${encodeURIComponent(emailBody)}`;
+        window.location.href = `mailto:kdx0756@naver.com?subject=덴트 견적 문의&body=${encodeURIComponent(emailBody)}`;
     });
 });
