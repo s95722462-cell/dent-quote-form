@@ -22,11 +22,15 @@ body {
 
 h1 {
     text-align: center;
-    color: #0056b3;
+    color: black; /* 대성카케어시스템은 검정색 */
+    margin-bottom: 5px; /* 아래 여백 줄임 */
 }
 
-h1 .company-name {
-    color: black; /* 검정색으로 변경 */
+h2 {
+    text-align: center;
+    color: #0056b3; /* 덴트 견적 문의는 파란색 */
+    margin-top: 0; /* 위 여백 제거 */
+    margin-bottom: 20px; /* 아래 여백 추가 */
 }
 
 p {
