@@ -46,22 +46,22 @@ document.addEventListener('DOMContentLoaded', () => {
             replacements.push({ original: input, replacement: replacement });
         });
 
-        // Add a longer delay and force reflow to handle in-app browser rendering quirks
-        setTimeout(() => {
-            // Force browser to recalculate layout (reflow)
-            void document.body.offsetHeight;
+        // Use requestAnimationFrame to ensure the DOM is updated before capturing
+        requestAnimationFrame(() => {
+            // And another to wait for the next paint cycle
+            requestAnimationFrame(() => {
+                html2canvas(document.getElementById('quote-container')).then(canvas => {
+                    const imageURL = canvas.toDataURL('image/png');
+                    capturedImage.src = imageURL;
+                    capturedImageContainer.style.display = 'block';
 
-            html2canvas(document.getElementById('quote-container')).then(canvas => {
-                const imageURL = canvas.toDataURL('image/png');
-                capturedImage.src = imageURL;
-                capturedImageContainer.style.display = 'block';
-
-                // Restore original inputs
-                replacements.forEach(item => {
-                    item.original.style.display = 'block';
-                    item.replacement.parentNode.removeChild(item.replacement);
+                    // Restore original inputs
+                    replacements.forEach(item => {
+                        item.original.style.display = 'block';
+                        item.replacement.parentNode.removeChild(item.replacement);
+                    });
                 });
             });
-        }, 300); // Increased delay to 300ms
+        });
     });
 });
