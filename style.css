@@ -59,6 +59,7 @@ label { display: block; margin-bottom: 5px; }
     box-sizing: border-box;
     z-index: 2; /* Position input above the display div */
     font-size: 16px; /* Ensure font size is consistent */
+    font-weight: normal; /* Explicitly set font weight */
 }
 
 .input-wrapper .input-display {
@@ -75,6 +76,7 @@ label { display: block; margin-bottom: 5px; }
     display: flex;
     align-items: center;
     font-size: 16px;
+    font-weight: normal; /* Explicitly set font weight */
     background-color: white;
 }
 
