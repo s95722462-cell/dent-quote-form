@@ -33,6 +33,9 @@ h2 {
     margin-top: 0;
     margin-bottom: 20px;
     white-space: nowrap;
+    display: flex; /* Use flexbox for robust centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 p { margin-bottom: 20px; }
