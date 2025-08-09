@@ -2,12 +2,8 @@ body {
     font-family: sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    display: flex;
-    flex-direction: column; /* 세로 정렬 */
-    justify-content: flex-start; /* 상단부터 시작 */
     margin: 0;
-    padding: 20px; /* 전체 페이지 여백 추가 */
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+    padding: 20px 0; /* 상하 여백만 주고 좌우 여백은 제거 */
 }
 
 .container {
@@ -16,8 +12,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 500px;
-    width: 100%;
+    width: 90%; /* 화면 너비의 90%를 사용 */
     margin: 20px auto; /* 상하 여백 및 중앙 정렬 */
+    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
 }
 
 h1 {
@@ -52,6 +49,7 @@ input[type="text"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
 }
 
 #image-container {
@@ -99,4 +97,23 @@ button:hover {
     font-size: 14px;
     margin-left: 10px; /* 라벨과의 간격 */
     vertical-align: middle; /* 라벨과 세로 정렬 */
+}
+
+#captured-image-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#download-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#download-link:hover {
+    background-color: #218838;
 }

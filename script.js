@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageContainer = document.getElementById('image-container');
     const carDiagram = document.getElementById('car-diagram');
     const undoButton = document.getElementById('undo-mark-button');
+    const captureButton = document.getElementById('capture-button');
+    const capturedImageContainer = document.getElementById('captured-image-container');
+    const capturedImage = document.getElementById('captured-image');
+    const downloadLink = document.getElementById('download-link');
     const markers = [];
 
     imageContainer.addEventListener('click', (event) => {
@@ -18,32 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
         marker.style.top = `${y}px`;
 
         imageContainer.appendChild(marker);
-        markers.push({ element: marker, x, y }); // 마커 요소와 좌표를 함께 저장
+        markers.push({ element: marker, x, y });
     });
 
     undoButton.addEventListener('click', () => {
         if (markers.length > 0) {
-            const lastMarker = markers.pop(); // 마지막 마커 제거
+            const lastMarker = markers.pop();
             imageContainer.removeChild(lastMarker.element);
         }
     });
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const carBrand = document.getElementById('car-brand').value;
-        const carModel = document.getElementById('car-model').value;
-        const carColor = document.getElementById('car-color').value;
-
-        let emailBody = `차량 브랜드: ${carBrand}\n`;
-        emailBody += `차량 이름: ${carModel}\n`;
-        emailBody += `차량 색상: ${carColor}\n\n`;
-        emailBody += '덴트 부위 (좌표):\n';
-
-        markers.forEach((marker, index) => {
-            emailBody += `  - 위치 ${index + 1}: x=${marker.x.toFixed(2)}, y=${marker.y.toFixed(2)}\n`;
+    captureButton.addEventListener('click', () => {
+        html2canvas(document.getElementById('capture-area')).then(canvas => {
+            const imageURL = canvas.toDataURL('image/png');
+            capturedImage.src = imageURL;
+            downloadLink.href = imageURL;
+            capturedImageContainer.style.display = 'block';
         });
-
-        window.location.href = `mailto:kdx0756@naver.com?subject=덴트 견적 문의&body=${encodeURIComponent(emailBody)}`;
     });
 });
