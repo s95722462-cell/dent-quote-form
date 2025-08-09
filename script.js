@@ -8,6 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const capturedImage = document.getElementById('captured-image');
     const markers = [];
 
+    // --- New Real-time Sync Logic ---
+    const inputs = form.querySelectorAll('.input-wrapper input[type="text"]');
+    inputs.forEach(input => {
+        const displayId = input.id + '-display';
+        const displayDiv = document.getElementById(displayId);
+        if (displayDiv) {
+            // Set initial placeholder text
+            if (input.placeholder) {
+                displayDiv.innerText = input.placeholder;
+                displayDiv.style.color = '#aaa'; // Style for placeholder
+            }
+
+            input.addEventListener('input', () => {
+                if (input.value) {
+                    displayDiv.innerText = input.value;
+                    displayDiv.style.color = '#333'; // Style for user text
+                } else {
+                    displayDiv.innerText = input.placeholder;
+                    displayDiv.style.color = '#aaa';
+                }
+            });
+        }
+    });
+
     imageContainer.addEventListener('click', (event) => {
         if (!carDiagram) return;
 
@@ -32,36 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     captureButton.addEventListener('click', () => {
-        const inputs = form.querySelectorAll('input[type="text"]');
-        const replacements = [];
+        // --- New Capture Logic ---
+        // Temporarily hide the actual input fields before capture
+        inputs.forEach(input => input.style.color = 'transparent');
 
-        // Replace inputs with divs for capture
-        inputs.forEach(input => {
-            const replacement = document.createElement('div');
-            replacement.classList.add('input-replacement');
-            replacement.innerText = input.value || ' ';
-            replacement.style.display = 'flex'; // Use flex for centering
-            input.style.display = 'none';
-            input.parentNode.insertBefore(replacement, input.nextSibling);
-            replacements.push({ original: input, replacement: replacement });
-        });
+        html2canvas(document.getElementById('quote-container'), {
+            // Improve canvas rendering quality
+            scale: 2,
+            useCORS: true,
+            logging: false
+        }).then(canvas => {
+            const imageURL = canvas.toDataURL('image/png');
+            capturedImage.src = imageURL;
+            capturedImageContainer.style.display = 'block';
 
-        // Use requestAnimationFrame to ensure the DOM is updated before capturing
-        requestAnimationFrame(() => {
-            // And another to wait for the next paint cycle
-            requestAnimationFrame(() => {
-                html2canvas(document.getElementById('quote-container')).then(canvas => {
-                    const imageURL = canvas.toDataURL('image/png');
-                    capturedImage.src = imageURL;
-                    capturedImageContainer.style.display = 'block';
-
-                    // Restore original inputs
-                    replacements.forEach(item => {
-                        item.original.style.display = 'block';
-                        item.replacement.parentNode.removeChild(item.replacement);
-                    });
-                });
-            });
+            // Restore visibility of input fields after capture
+            inputs.forEach(input => input.style.color = '');
         });
     });
 });

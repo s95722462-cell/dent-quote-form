@@ -15,15 +15,24 @@
         <form id="quote-form">
             <div class="form-group">
                 <label for="car-brand">차량 브랜드:</label>
-                <input type="text" id="car-brand" name="car-brand" placeholder="예) 현대" required>
+                <div class="input-wrapper">
+                    <input type="text" id="car-brand" name="car-brand" placeholder="예) 현대" required>
+                    <div class="input-display" id="car-brand-display"></div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="car-model">차량 이름:</label>
-                <input type="text" id="car-model" name="car-model" placeholder="예) 그랜져 TG" required>
+                <div class="input-wrapper">
+                    <input type="text" id="car-model" name="car-model" placeholder="예) 그랜져 TG" required>
+                    <div class="input-display" id="car-model-display"></div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="car-color">차량 색상:</label>
-                <input type="text" id="car-color" name="car-color" placeholder="예) 흰색" required>
+                <div class="input-wrapper">
+                    <input type="text" id="car-color" name="car-color" placeholder="예) 흰색" required>
+                    <div class="input-display" id="car-color-display"></div>
+                </div>
             </div>
             <div class="form-group">
                 <label>덴트가 필요한 부위를 선택해주세요: <button type="button" id="undo-mark-button">마지막 표시 취소</button></label>
