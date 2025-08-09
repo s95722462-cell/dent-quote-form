@@ -6,8 +6,8 @@
     <title>덴트 견적 문의</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.3">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -18,24 +18,15 @@
         <form id="quote-form">
             <div class="form-group">
                 <label for="car-brand">차량 브랜드:</label>
-                <div class="input-wrapper">
-                    <input type="text" id="car-brand" name="car-brand" placeholder="예) 현대" required>
-                    <div class="input-display" id="car-brand-display"></div>
-                </div>
+                <input type="text" id="car-brand" name="car-brand" placeholder="예) 현대" required>
             </div>
             <div class="form-group">
                 <label for="car-model">차량 이름:</label>
-                <div class="input-wrapper">
-                    <input type="text" id="car-model" name="car-model" placeholder="예) 그랜져 TG" required>
-                    <div class="input-display" id="car-model-display"></div>
-                </div>
+                <input type="text" id="car-model" name="car-model" placeholder="예) 그랜져 TG" required>
             </div>
             <div class="form-group">
                 <label for="car-color">차량 색상:</label>
-                <div class="input-wrapper">
-                    <input type="text" id="car-color" name="car-color" placeholder="예) 흰색" required>
-                    <div class="input-display" id="car-color-display"></div>
-                </div>
+                <input type="text" id="car-color" name="car-color" placeholder="예) 흰색" required>
             </div>
             <div class="form-group">
                 <label>덴트가 필요한 부위를 선택해주세요: <button type="button" id="undo-mark-button">마지막 표시 취소</button></label>
@@ -52,6 +43,6 @@
         <p><strong>PC:</strong> 이미지 우클릭 후 '이미지 저장' 선택<br><strong>모바일:</strong> 이미지를 길게 눌러 저장</p>
         <img id="captured-image" src="" alt="캡처된 견적 내용" style="width:90%; max-width: 500px;">
     </div>
-    <script src="script.js?v=1.2"></script>
+    <script src="script.js?v=1.3"></script>
 </body>
 </html>

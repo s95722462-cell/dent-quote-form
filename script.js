@@ -8,29 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const capturedImage = document.getElementById('captured-image');
     const markers = [];
 
-    // --- Real-time Sync Logic ---
-    const inputs = form.querySelectorAll('.input-wrapper input[type="text"]');
-    inputs.forEach(input => {
-        const displayId = input.id + '-display';
-        const displayDiv = document.getElementById(displayId);
-        if (displayDiv) {
-            if (input.placeholder) {
-                displayDiv.innerText = input.placeholder;
-                displayDiv.style.color = '#aaa';
-            }
-
-            input.addEventListener('input', () => {
-                if (input.value) {
-                    displayDiv.innerText = input.value;
-                    displayDiv.style.color = '#333';
-                } else {
-                    displayDiv.innerText = input.placeholder;
-                    displayDiv.style.color = '#aaa';
-                }
-            });
-        }
-    });
-
     imageContainer.addEventListener('click', (event) => {
         if (!carDiagram) return;
         const rect = carDiagram.getBoundingClientRect();
@@ -52,16 +29,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     captureButton.addEventListener('click', () => {
-        inputs.forEach(input => input.style.visibility = 'hidden');
-        html2canvas(document.getElementById('quote-container'), {
-            scale: 2,
-            useCORS: true,
-            logging: false
-        }).then(canvas => {
-            const imageURL = canvas.toDataURL('image/png');
-            capturedImage.src = imageURL;
-            capturedImageContainer.style.display = 'block';
-            inputs.forEach(input => input.style.visibility = 'visible');
+        const inputs = form.querySelectorAll('input[type="text"]');
+        const replacements = [];
+
+        // Replace inputs with divs for capture
+        inputs.forEach(input => {
+            const replacement = document.createElement('div');
+            replacement.classList.add('input-replacement');
+            replacement.innerText = input.value || input.placeholder;
+            if (!input.value) {
+                replacement.style.color = '#aaa';
+            }
+            input.style.display = 'none';
+            input.parentNode.insertBefore(replacement, input);
+            replacements.push({ original: input, replacement: replacement });
+        });
+
+        // Use requestAnimationFrame to ensure the DOM is updated before capturing
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                html2canvas(document.getElementById('quote-container'), {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false
+                }).then(canvas => {
+                    const imageURL = canvas.toDataURL('image/png');
+                    capturedImage.src = imageURL;
+                    capturedImageContainer.style.display = 'block';
+
+                    // Restore original inputs
+                    replacements.forEach(item => {
+                        item.original.style.display = 'block';
+                        item.replacement.parentNode.removeChild(item.replacement);
+                    });
+                });
+            });
         });
     });
 });
