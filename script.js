@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const capturedImage = document.getElementById('captured-image');
     const markers = [];
 
-    // --- New Real-time Sync Logic ---
+    // --- Real-time Sync Logic ---
     const inputs = form.querySelectorAll('.input-wrapper input[type="text"]');
     inputs.forEach(input => {
         const displayId = input.id + '-display';
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     captureButton.addEventListener('click', () => {
         // --- New Capture Logic ---
         // Temporarily hide the actual input fields before capture
-        inputs.forEach(input => input.style.color = 'transparent');
+        inputs.forEach(input => input.style.visibility = 'hidden');
 
         html2canvas(document.getElementById('quote-container'), {
             // Improve canvas rendering quality
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             capturedImageContainer.style.display = 'block';
 
             // Restore visibility of input fields after capture
-            inputs.forEach(input => input.style.color = '');
+            inputs.forEach(input => input.style.visibility = 'visible');
         });
     });
 });

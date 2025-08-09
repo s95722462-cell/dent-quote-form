@@ -22,9 +22,18 @@ h1, h2, p {
     text-align: center;
 }
 
-h1 { color: black; margin-bottom: 5px; }
+h1 {
+    color: black;
+    margin-bottom: 5px;
+    white-space: nowrap; /* Prevent line wrapping */
+}
 
-h2 { color: #0056b3; margin-top: 0; margin-bottom: 20px; }
+h2 {
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 20px;
+    white-space: nowrap; /* Prevent line wrapping */
+}
 
 p { margin-bottom: 20px; }
 
