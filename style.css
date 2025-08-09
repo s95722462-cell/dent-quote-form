@@ -46,11 +46,13 @@ label {
 
 input[type="text"] {
     width: 100%;
-    padding: 10px;
+    height: 40px; /* 높이를 명시적으로 지정 */
+    line-height: 40px; /* 높이와 동일하게 설정하여 수직 중앙 정렬 */
+    padding: 0 10px; /* 상하 패딩 제거, 좌우 패딩 유지 */
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
-    text-align: center; /* 텍스트 가로 중앙 정렬 */
+    box-sizing: border-box;
+    text-align: left; /* 텍스트 가로 왼쪽 정렬 */
 }
 
 #image-container {
