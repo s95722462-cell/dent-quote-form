@@ -46,16 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
             replacements.push({ original: input, replacement: replacement });
         });
 
-        html2canvas(document.getElementById('quote-container')).then(canvas => {
-            const imageURL = canvas.toDataURL('image/png');
-            capturedImage.src = imageURL;
-            capturedImageContainer.style.display = 'block';
+        // Add a short delay to allow the browser to render the changes
+        setTimeout(() => {
+            html2canvas(document.getElementById('quote-container')).then(canvas => {
+                const imageURL = canvas.toDataURL('image/png');
+                capturedImage.src = imageURL;
+                capturedImageContainer.style.display = 'block';
 
-            // Restore original inputs
-            replacements.forEach(item => {
-                item.original.style.display = 'block';
-                item.replacement.parentNode.removeChild(item.replacement);
+                // Restore original inputs
+                replacements.forEach(item => {
+                    item.original.style.display = 'block';
+                    item.replacement.parentNode.removeChild(item.replacement);
+                });
             });
-        });
+        }, 100); // 100ms delay
     });
 });
