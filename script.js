@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const captureButton = document.getElementById('capture-button');
     const capturedImageContainer = document.getElementById('captured-image-container');
     const capturedImage = document.getElementById('captured-image');
-    const downloadLink = document.getElementById('download-link');
     const markers = [];
 
     imageContainer.addEventListener('click', (event) => {
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const replacement = document.createElement('div');
             replacement.classList.add('input-replacement');
             replacement.innerText = input.value || ' ';
-            replacement.style.display = 'block';
+            replacement.style.display = 'flex'; // Use flex for centering
             input.style.display = 'none';
             input.parentNode.insertBefore(replacement, input.nextSibling);
             replacements.push({ original: input, replacement: replacement });
@@ -50,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         html2canvas(document.getElementById('quote-container')).then(canvas => {
             const imageURL = canvas.toDataURL('image/png');
             capturedImage.src = imageURL;
-            downloadLink.href = imageURL;
             capturedImageContainer.style.display = 'block';
 
             // Restore original inputs
