@@ -46,10 +46,11 @@ label {
 
 input[type="text"] {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+    text-align: center; /* 텍스트 가로 중앙 정렬 */
 }
 
 #image-container {

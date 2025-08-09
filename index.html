@@ -8,37 +8,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <div id="capture-area">
-        <div class="container">
-            <h1>대성카케어시스템</h1>
-            <h2>덴트 견적 문의 <a href="tel:010-9303-7989">010-9303-7989</a></h2>
-            <p>차량 정보와 덴트가 필요한 부위를 알려주세요.</p>
-            <form id="quote-form">
-                <div class="form-group">
-                    <label for="car-brand">차량 브랜드:</label>
-                    <input type="text" id="car-brand" name="car-brand" placeholder="예) 현대" required>
+    <div id="quote-container" class="container">
+        <h1>대성카케어시스템</h1>
+        <h2>덴트 견적 문의 <a href="tel:010-9303-7989">010-9303-7989</a></h2>
+        <p>차량 정보와 덴트가 필요한 부위를 알려주세요.</p>
+        <form id="quote-form">
+            <div class="form-group">
+                <label for="car-brand">차량 브랜드:</label>
+                <input type="text" id="car-brand" name="car-brand" placeholder="예) 현대" required>
+            </div>
+            <div class="form-group">
+                <label for="car-model">차량 이름:</label>
+                <input type="text" id="car-model" name="car-model" placeholder="예) 그랜져 TG" required>
+            </div>
+            <div class="form-group">
+                <label for="car-color">차량 색상:</label>
+                <input type="text" id="car-color" name="car-color" placeholder="예) 흰색" required>
+            </div>
+            <div class="form-group">
+                <label>덴트가 필요한 부위를 선택해주세요: <button type="button" id="undo-mark-button">마지막 표시 취소</button></label>
+                <div id="image-container">
+                    <img id="car-diagram" src="my_car_image.png" alt="차량 다이어그램" />
                 </div>
-                <div class="form-group">
-                    <label for="car-model">차량 이름:</label>
-                    <input type="text" id="car-model" name="car-model" placeholder="예) 그랜져 TG" required>
-                </div>
-                <div class="form-group">
-                    <label for="car-color">차량 색상:</label>
-                    <input type="text" id="car-color" name="car-color" placeholder="예) 흰색" required>
-                </div>
-                <div class="form-group">
-                    <label>덴트가 필요한 부위를 선택해주세요: <button type="button" id="undo-mark-button">마지막 표시 취소</button></label>
-                    <div id="image-container">
-                        <img id="car-diagram" src="my_car_image.png" alt="차량 다이어그램" />
-                    </div>
-                </div>
-                <button type="button" id="capture-button">견적 내용 캡처하기</button>
-            </form>
-        </div>
+            </div>
+            <button type="button" id="capture-button">견적 내용 캡처하기</button>
+        </form>
     </div>
-    <div id="captured-image-container" style="display:none;">
+    <div id="captured-image-container" style="display:none; text-align: center;">
         <h3>캡처된 견적 내용</h3>
-        <img id="captured-image" src="" alt="캡처된 견적 내용" style="width:100%;">
+        <img id="captured-image" src="" alt="캡처된 견적 내용" style="width:90%; max-width: 500px;">
         <a id="download-link" href="#" download="dent_quote.png">이미지 다운로드</a>
     </div>
     <script src="script.js"></script>

@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     captureButton.addEventListener('click', () => {
-        html2canvas(document.getElementById('capture-area')).then(canvas => {
+        html2canvas(document.getElementById('quote-container')).then(canvas => {
             const imageURL = canvas.toDataURL('image/png');
             capturedImage.src = imageURL;
             downloadLink.href = imageURL;
