@@ -33,11 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     captureButton.addEventListener('click', () => {
+        const inputs = form.querySelectorAll('input[type="text"]');
+        const replacements = [];
+
+        // Replace inputs with divs for capture
+        inputs.forEach(input => {
+            const replacement = document.createElement('div');
+            replacement.classList.add('input-replacement');
+            replacement.innerText = input.value || ' ';
+            replacement.style.display = 'block';
+            input.style.display = 'none';
+            input.parentNode.insertBefore(replacement, input.nextSibling);
+            replacements.push({ original: input, replacement: replacement });
+        });
+
         html2canvas(document.getElementById('quote-container')).then(canvas => {
             const imageURL = canvas.toDataURL('image/png');
             capturedImage.src = imageURL;
             downloadLink.href = imageURL;
             capturedImageContainer.style.display = 'block';
+
+            // Restore original inputs
+            replacements.forEach(item => {
+                item.original.style.display = 'block';
+                item.replacement.parentNode.removeChild(item.replacement);
+            });
         });
     });
 });
