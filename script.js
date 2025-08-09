@@ -46,8 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
             replacements.push({ original: input, replacement: replacement });
         });
 
-        // Add a short delay to allow the browser to render the changes
+        // Add a longer delay and force reflow to handle in-app browser rendering quirks
         setTimeout(() => {
+            // Force browser to recalculate layout (reflow)
+            void document.body.offsetHeight;
+
             html2canvas(document.getElementById('quote-container')).then(canvas => {
                 const imageURL = canvas.toDataURL('image/png');
                 capturedImage.src = imageURL;
@@ -59,6 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.replacement.parentNode.removeChild(item.replacement);
                 });
             });
-        }, 100); // 100ms delay
+        }, 300); // Increased delay to 300ms
     });
 });
