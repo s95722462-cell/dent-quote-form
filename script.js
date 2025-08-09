@@ -14,16 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const displayId = input.id + '-display';
         const displayDiv = document.getElementById(displayId);
         if (displayDiv) {
-            // Set initial placeholder text
             if (input.placeholder) {
                 displayDiv.innerText = input.placeholder;
-                displayDiv.style.color = '#aaa'; // Style for placeholder
+                displayDiv.style.color = '#aaa';
             }
 
             input.addEventListener('input', () => {
                 if (input.value) {
                     displayDiv.innerText = input.value;
-                    displayDiv.style.color = '#333'; // Style for user text
+                    displayDiv.style.color = '#333';
                 } else {
                     displayDiv.innerText = input.placeholder;
                     displayDiv.style.color = '#aaa';
@@ -34,16 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     imageContainer.addEventListener('click', (event) => {
         if (!carDiagram) return;
-
         const rect = carDiagram.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
-
         const marker = document.createElement('div');
         marker.classList.add('marker');
         marker.style.left = `${x}px`;
         marker.style.top = `${y}px`;
-
         imageContainer.appendChild(marker);
         markers.push({ element: marker, x, y });
     });
@@ -56,12 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     captureButton.addEventListener('click', () => {
-        // --- New Capture Logic ---
-        // Temporarily hide the actual input fields before capture
         inputs.forEach(input => input.style.visibility = 'hidden');
-
         html2canvas(document.getElementById('quote-container'), {
-            // Improve canvas rendering quality
             scale: 2,
             useCORS: true,
             logging: false
@@ -69,8 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageURL = canvas.toDataURL('image/png');
             capturedImage.src = imageURL;
             capturedImageContainer.style.display = 'block';
-
-            // Restore visibility of input fields after capture
             inputs.forEach(input => input.style.visibility = 'visible');
         });
     });
